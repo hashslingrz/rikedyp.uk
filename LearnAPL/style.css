@@ -25,6 +25,20 @@ src: url("assets/SourceCodeVariable-Roman.ttf");
     display: inline-grid;
     grid-template-columns: repeat(3,1fr);
 }
+a {
+    width: 5em;
+    background: #eae9f3;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0.7em;
+    color: black;
+    padding: 0.3em;
+    z-index: 2;   
+}
+a:hover {
+    background: #928abd;
+    color: white;
+}
 body {
     background: #fffff3;    
     font-family: SC;
@@ -57,20 +71,7 @@ h2, h3, h4 {
 }
 #back {left: 5vw;}
 #next {right: 5vw;}
-.button {
-    width: 5em;
-    background: #eae9f3;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 0.7em;
-    color: black;
-    padding: 0.3em;
-    z-index: 2;
-}
-.button:hover {
-    background: #928abd;
-    color: white;
-}
+
 #content {
     top: 2.5em;    
     position: relative;

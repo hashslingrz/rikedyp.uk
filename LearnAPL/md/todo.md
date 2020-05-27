@@ -1,103 +1,325 @@
+<title>To Do</title>
+<body>
+<div id="navbar">
+<a id="back" href="?p=4">← Back</a>
+<h1 id="navtitle">To Do</h1>
+<a id="next" href=".">Home ↺</a>
+</div>
+
 # To do
-More course material coming soon...
 
-3 Day Course
-============
-Day 1: Problem solving in APL 
---------------------------------
-Students watch the introductory video 
-    + - × = ⍳ ()
-Students attempt Problem Set 1: The APL Pocket Calculator
-- typing APL
-- syntax
-- 2 data types (char and num*)
-- ⎕A, ⎕D
-- Comments ⍝
-- High minus ¯
-- Naming ←
-- The interface (Windows)
-- ]box on
-- ]rows -fold=3
-- problems.tryapl.org
-- Empty arrays, high rank arrays
+### History of APL (link to APL wiki & HOPL paper?)
+- ppt 1
+    - Type ball: slide 37
+### Motivation
+- Notation as a tool of thought
+- Comparison to TMN (link to APL wiki)   
 
-+ - × ÷ ⍝ ¯
+### APL Language    
+- Syntax overview
+    array | fn arg | larg fn rarg | fn op | lfn op rfn | array[indices]        
+    - Scalar vs. Non-scalar functions
+    - Order of execution
+    - Chars and Nums
+        - Quotes `''`, double quotes `''''`
+        - Real, Complex, Engineering
+        - Format `⍕` Execute `⍎`
+- Primitives
+    - `+ × - ÷ ⌹ * ⍟ ! |`
+    - Reduce `/ ⌿` Scan `\ ⍀`
+    - Replicate, Expand
+        - Most commonly, Compress
+    - `⌈ ⌊ ⍋ ⍒ < ≤ = ≥ > ≠ ≡ ≢`
+    - `∊ ∪ ∩ ~ ⍷`
+        - Link to Progressive-index-of webinar
+    - `⍝ ⎕ ⍞`
+    - `⍴≢,⍪↑↓`
+    - `⌽⍉⊖`
+    - `⍳ ?`
+        - `⎕RL`
+    - `○` 
+    - `⍬ ''`
+    - `⋄`
+    - `⊤ ⊥ 2⊥⍣¯1`
+    
+- Selecting from Arrays
+    - Link to Webinar
+    - Index-of `⍳`
+    - `[]` `⌷` 
+    - High rank selection
+        - The shape of the result
+        - `⌷[]` vs `⌷⍤`        
+- Products
+    - ∘.f
+    - f.g
+- Naming / Assignment
+    - (strand assignment)←v1 v2
+    - Selective assignment 
+    - Indexed assignment 
+        - When is `(C[n]←C[n]+1) ≢ C[n]+←1`?
+    - Modified assignment
+    - `a_ó∆ø1⍙ `
+    - Names do not begin with a `⎕D` digit
+    - Cannot change var to fn/op (or vice versa) on reassignment
+    
+        ```APL
+              foo←{⍺+⍵}
+              foo←42
+        SYNTAX ERROR: Invalid modified assignment, or an attempt was made to change nameclass on assignment
+              foo←42
+              ∧
+        ```
+- Control Structures
+    - ppt 4, slide 89
 
-Day 1 PM: What Dyalog can do
-----------------------------
-- Input & Output
-  - ⎕ ⍞ ⍕ ⎕FMT ⎕VFI 
-  - ⎕CSV ⎕XML ⎕JSON ⎕F ⎕N  
-]HttpCommand, Conga
-OLE / COM
-Jarvis
-MiServer
-Component files
+- Nested arrays
+    ppt 5
+    - Simple scalar
+    - Simple array 
+    - Nested array 
+    - Stranding
+    - Detph `≡`
+    - Floating scalars
+    - Prototypes
+    - `⊃` pick
+    - `]box on`
+        - `]disp`, `]display`
+        
+- Operators
+    - Trapezium rule & Simpson's rule problems (2018)
+    - Most useful
+        - `/ ⌿ ⍣ ⌺ ⌸ ¨ ⍤ f.g ∘.f @`
+        - `Axis[] vs Rank`
+        - Laminate `,[0.5]` 
+    - Also useful
+        - `\ ⍀ ∘ ⍤ ⍥ ⍠ ⍨ & ⌶`
+        
+- Text formatting
+    - `⍕ ⎕FMT`
+    
+- Input/Output
+    - `⎕ ⍞ ⎕VFI`
+    - `{//⎕VFI⍵}⍞`
 
-Day 2 AM: Further APL
----------------------
-- *⎕DR number, character, complex, engineering
-  - Compute Pi via monte-carlo
-- Array internals
-- Cells vs Dimensions, Rank vs Axis
-- ]disp, ]display
-- Dfns, Tradfns and Tacit programming
-- More problem solving
+- Namespaces & Other Objects
+    - Namespaces 
+        ppt 6, slide 39...
 
-Day 2 PM: APL & Computer Stuff
-------------------------------
-- Namespaces, classes, objects
-- Control structures
-- Error trapping
+### Using the session 
+- The workspace
+- System commands
+    - ppt4, slide 16
+    
+    ```APL
+    )clear
+    )vars )fns )obs )erase
+    )save )load )xload )copy )pcopy 
+    )drop ⍝ or delete on file system
+    ```
+- System Variables / System Functions
+    - Cheat sheet 
+        ppt 5, slide 88/89
+        - Most common ones up front 
+        - The rest on the back / links to docs?
+    - Tradfn ⎕NC exercise
+        - create ambivalent tradfn using 0=⎕NC
 
-Day 3: Using Dyalog in anger
-----------------------------
-- Warts one is likely to encounter / conveniences which should be used carefully in production code
-  - GoTo
-  - Niladic functions
-  - Stranded assignment
-  - Selective assignment
-  - Modified assignment
-  
-- How to find out more
-- Where to go to get help
-- Try to create demo projects from scratch from spec
-It is likely that content from the first two days will overrun (especially the first time this is run). So the final portion of the course should be flexible and, as much as possible, tailored to what the customer will be doing in their day-to-day.
+- Session config
+    ppt4, slide 38
+    - quadVars
+    - GUI menu
 
-What you need to learn in week 1
-================================
-Terminology
-APL which works in v12.0 (Mark v14+ language features, include summary in handout)
-Typing APL
-Parsing APL
-What is array-oriented thinking?
-Dfns, Tradfns and Tacit
-:Control statements
-Getting help / finding things out
-- documentation
-- F1
-- aplcart 
-- apl wiki
-- apl orchard
-- support@dyalog
-User commands
-- ]box, ]rows
+- Shortcuts & UCMDs cheat sheet
+    - Shortcuts
+        - Ctrl-Home/End
+        - Shift-Enter
+        - Ctrl-Enter 
+        - Esc
+        - Shift-Esc
+        - Ctrl-UpArrow
+        - NumPad- [line numbers]
+        - NumPad/ [reformat]
+        - Ctrl-Delete 
+        - Shift-Esc 
+        - Ctrl-Shift-Backspace
+        - Ctrl-Shift-Enter 
+        - Ctrl(-Shit)-Tab 
+        
+        
+    - UCMDs 
+        - `]box -trains=tree`
+        - `]rows -fold=3`
+        - `]chart` `]plot`
+        - Where to find more?
 
-More
-----
-Excercises
-Practising finding answers for yourself
+### File Handling
+ppt 7, slide 15
+- Tie numbers `⎕NTIE ⎕NUNTIE`
+- Native files `⎕N...`
+- APL Component Files `⎕F...`
 
-Less
-----
-Teacher talk
+### Modern APL
+ppt 7 slide 35...
+- v14.0
+    - `⍤ ⌸ ≢`
+    - Dyadic `⍳` high-rank extension 
+- v16.0
+    - Where / interval-index `⍸`
+    - `⊆`
+    - `⎕CSV` `⎕JSON` 
+    - `@`
+    - `⌺`
+- v18.0
+    - Atop `⍤`
+    - Over `⍥`
+    - Unique mask `≠`
+    - `⎕C`
+    - `⎕DT`
+    - Case-insensitive match `≡⍥⎕C`
 
-What you DON'T need to 
-======================
-What all the primitives do
-The history of APL / KEI's life
-The "motivation" for APL in terms of teaching tensor algebra / replacing Traditional Mathematical Notation
+### Out in the wild
+- `⎕← ⊢ +` as Identity / Print-out functions 
+    - Only use `⎕←` in production
+- Goto
+    ppt 4, slide 105
+    - `→/` Goto-reduction *\*shudders\**
+    - `:Goto`
+    - `:Labels`
+    - `→⎕LC`
+    
 
-Meta
-----
-Why :AndIf?
+### Errors
+- Common errors
+    - LENGTH
+    - DOMAIN
+    - SYNTAX
+    - RANK
+    - VALUE
+    - WS FULL
+- `⎕DMX`
+- `⎕TRAP`, `:Trap` 
+- `⎕SIGNAL`
+- Interrupts
+    ppt 4, slide 109
+- Clear last calls 
+    ppt 4, slide 116
+    - `→` "naked branch"
+    
+
+### Terminology
+- Scalar
+- List 
+- Table 
+- Vector 
+- Matrix
+- Rank 
+- Array 
+- Variable 
+- Naming / Assignment 
+- System commands 
+- Integer 
+- Floating point number 
+- E-notation
+    - Scientific notation 
+    - Engineering notation 
+    - Exponential notation
+- Primitive function 
+- Scalar function 
+- Structural function 
+- Monadic
+- Dyadic
+- Niladic
+- Lamp 
+- IME (Input Method Editor)
+- Constant / Literal
+- Stranding
+
+### Interpreter internals
+- APL arrays are self-describing
+- Automatic memory management (ppt1, slide 15)
+- Dynamically typed
+    - Bit booleans
+    - Int... Float
+        - 8-byte double, 16-byte decimal
+    - Complex
+        - 2×8 byte double
+    - Decf
+    - Engineering notation
+    - Character 
+        - 1-byte, 2-byte, 4-byte
+    - Reference
+        - e.g. Namespace, Class
+    - `⎕FR ⍝ 645 or 1287`
+    - Tolerant comparison `⎕CT`
+- Data copied only if necessary
+- Unicode (unless Classic)
+- The Stack 
+    - ppt 4, slide 58
+    - Name scope
+    - Avoid globals
+
+    
+### Tools & Interfaces
+- GUI IDE
+    - Toolbar (ppt 4, slide 50)
+- Classic vs Unicode (ppt1, slide 42)
+    - Classic 
+        - ⎕AV
+    - Unicode 
+        - UPPERCASE before lowercase
+- Typing APL 
+    - Windows IME
+    - Language bar
+    - APL Wiki
+- OOP
+- Parallel
+    - Vector instructions
+    - Compile to GPU
+    - Multi-process with Futures & Isolates
+- OLE/COM and Microsoft .NET
+- SQL
+- `⎕XML`, `⎕JSON`, `⎕CSV`
+- Inter-operable
+    - Win, AIX, Linux, Pi, macOS
+    - Code can be used across platforms without conversion
+    - Data files can be used across 32/64 bit, Unicode vs Classic, Big- vs Little-Endian
+        - Even if transmitted via TCP sockets
+    
+### User-defined functions & operators
+- Primitive function 
+- Scalar function 
+- Structural function 
+- Monadic
+- Dyadic
+- Niladic
+- Dfns
+    - Guards
+    - Recursion
+- Dops
+- Tradfns
+    - Local names
+    - Control structures
+    - Session
+- Tradops
+- Multi-line functions
+- Tacit (point-free) programming
+- `⎕FIX` `⎕FX`
+
+### Where to find out more
+- F1 / web help
+- Google
+- support@dyalog.com
+- rpark@dyalog.com 
+
+## Exercises
+- Diane
+- Perl Weekly Challenge
+- Code Golf Stack Exchange
+- APL Problem Solving Competition
+- MK ppt
+
+Tutorial
+--------
+
+Handout
+-------
